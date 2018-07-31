@@ -1,0 +1,51 @@
+﻿@model MoviesDownload.Models.Movies
+
+<div>
+    <div class="modal-header">
+        <h2 class="modal-title">Movie</h2>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @{
+        var base64 = Convert.ToBase64String(Model.Poster);
+        var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+    }
+    <div align="center">
+          <img src="@imgSrc" alt="@Model.Name" style="height:200px;width:200px;" />
+    </div>
+    
+
+    <hr />
+
+
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.Label("Year Of Release")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Yearofrelease, new { @Value = Model.Yearofrelease.ToString("dd-MMM-yyyy") })
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Plot)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Plot)
+        </dd>
+        
+        <dd>
+
+        </dd>
+    </dl>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+</div>
